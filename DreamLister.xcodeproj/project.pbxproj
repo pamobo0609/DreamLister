@@ -23,6 +23,8 @@
 		2914D163244E0B20001A0836 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914D15B244E0B20001A0836 /* Item+CoreDataClass.swift */; };
 		2914D165244E0B20001A0836 /* Store+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914D15D244E0B20001A0836 /* Store+CoreDataClass.swift */; };
 		2914D167244E0B20001A0836 /* ItemType+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914D15F244E0B20001A0836 /* ItemType+CoreDataClass.swift */; };
+		2922BB13244E784500290D37 /* ItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2922BB12244E784500290D37 /* ItemDetailsViewController.swift */; };
+		2922BB15244E7B8400290D37 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2922BB14244E7B8400290D37 /* CustomTextField.swift */; };
 		2923D89E244E49FB00BB9094 /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2923D89D244E49FB00BB9094 /* MaterialView.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +47,8 @@
 		2914D15B244E0B20001A0836 /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Item+CoreDataClass.swift"; path = "DreamLister/model/Item+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		2914D15D244E0B20001A0836 /* Store+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Store+CoreDataClass.swift"; path = "DreamLister/model/Store+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		2914D15F244E0B20001A0836 /* ItemType+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ItemType+CoreDataClass.swift"; path = "DreamLister/model/ItemType+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		2922BB12244E784500290D37 /* ItemDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsViewController.swift; sourceTree = "<group>"; };
+		2922BB14244E7B8400290D37 /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		2923D89D244E49FB00BB9094 /* MaterialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,6 +74,15 @@
 			path = generated;
 			sourceTree = "<group>";
 		};
+		2908CF5E244E65D400CDFE9F /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				2914D144244E036F001A0836 /* MainViewController.swift */,
+				2922BB12244E784500290D37 /* ItemDetailsViewController.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
 		2914D134244E036E001A0836 = {
 			isa = PBXGroup;
 			children = (
@@ -89,11 +102,11 @@
 		2914D13F244E036F001A0836 /* DreamLister */ = {
 			isa = PBXGroup;
 			children = (
+				2908CF5E244E65D400CDFE9F /* controller */,
 				2923D89C244E49E000BB9094 /* view */,
 				2914D157244E0569001A0836 /* model */,
 				2914D140244E036F001A0836 /* AppDelegate.swift */,
 				2914D142244E036F001A0836 /* SceneDelegate.swift */,
-				2914D144244E036F001A0836 /* MainViewController.swift */,
 				2914D146244E036F001A0836 /* Main.storyboard */,
 				2914D14C244E0371001A0836 /* Assets.xcassets */,
 				2914D14E244E0371001A0836 /* LaunchScreen.storyboard */,
@@ -118,6 +131,7 @@
 		2923D89C244E49E000BB9094 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				2922BB14244E7B8400290D37 /* CustomTextField.swift */,
 				2923D89D244E49FB00BB9094 /* MaterialView.swift */,
 				2908CF5C244E592100CDFE9F /* ItemCell.swift */,
 			);
@@ -197,7 +211,9 @@
 			files = (
 				2914D167244E0B20001A0836 /* ItemType+CoreDataClass.swift in Sources */,
 				2908CF59244E579400CDFE9F /* Store+CoreDataProperties.swift in Sources */,
+				2922BB13244E784500290D37 /* ItemDetailsViewController.swift in Sources */,
 				2908CF57244E579400CDFE9F /* Image+CoreDataProperties.swift in Sources */,
+				2922BB15244E7B8400290D37 /* CustomTextField.swift in Sources */,
 				2914D14B244E036F001A0836 /* DreamLister.xcdatamodeld in Sources */,
 				2908CF5D244E592100CDFE9F /* ItemCell.swift in Sources */,
 				2914D145244E036F001A0836 /* MainViewController.swift in Sources */,
