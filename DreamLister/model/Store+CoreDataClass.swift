@@ -13,4 +13,8 @@ import CoreData
 @objc(Store)
 public class Store: NSManagedObject {
 
+    public override func awakeFromInsert() {
+        super.awakeFromInsert()
+    }
+    
 }

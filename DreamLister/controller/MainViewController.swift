@@ -19,13 +19,18 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //generateTestData()
+       // generateTestData()
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
         attemptFetch()
         
+    }
+    
+    @IBAction func onSortChange(_ sender: UISegmentedControl) {
+        attemptFetch()
+        tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -58,22 +63,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
-
-    func attemptFetch() {
-        let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
-        let dateSort = NSSortDescriptor(key: "created", ascending: false)
-        fetchRequest.sortDescriptors = [dateSort]
-        
-        self.controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context,
-                                                    sectionNameKeyPath: nil, cacheName: nil)
-        
-        do {
-            try controller.performFetch()
-        } catch {
-            let error = error as NSError
-            print("\(error)")
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let objs = controller.fetchedObjects, objs.count > 0 {
+            let item = objs[indexPath.row]
+            performSegue(withIdentifier: "ItemDetailsViewController", sender: item)
         }
-        
     }
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
@@ -122,7 +117,55 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
-    func generateTestData() {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ItemDetailsViewController" {
+            if let destination = segue.destination as? ItemDetailsViewController {
+                if let item = sender as? Item {
+                    destination.itemToEdit = item
+                }
+            }
+        }
+    }
+    
+    private func attemptFetch() {
+        let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
+        let dateSort = NSSortDescriptor(key: "created", ascending: false)
+        let priceSort = NSSortDescriptor(key: "price", ascending: true)
+        let titleSort = NSSortDescriptor(key: "title", ascending: true)
+        
+        switch segment.selectedSegmentIndex {
+        case 0:
+            fetchRequest.sortDescriptors = [dateSort]
+            break
+            
+        case 1:
+            fetchRequest.sortDescriptors = [priceSort]
+            break
+            
+        case 2:
+            fetchRequest.sortDescriptors = [titleSort]
+            break
+            
+        default:
+            break
+        }
+        
+        let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context,
+                                                    sectionNameKeyPath: nil, cacheName: nil)
+        
+        self.controller = controller
+        self.controller.delegate = self
+        
+        do {
+            try controller.performFetch()
+        } catch {
+            let error = error as NSError
+            print("\(error)")
+        }
+        
+    }
+    
+    private func generateTestData() {
         let item = Item(context: context)
         item.title = "David Bowie - Hunky Dory"
         item.price = 35
